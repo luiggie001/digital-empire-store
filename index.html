@@ -5,109 +5,398 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Digital Empire Store</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f5f8ff;
-      color: #1a1a1a;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+    a {
+      color: inherit;
     }
     header {
-      background: #1f4fff;
+      background: linear-gradient(135deg, #1d4ed8, #0ea5e9);
       color: #fff;
-      padding: 25px;
-      text-align: center;
-      font-size: 32px;
-      font-weight: bold;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    header .logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    header .tagline {
+      font-size: 14px;
+      opacity: 0.9;
     }
     .hero {
-      padding: 60px 20px;
+      padding: 50px 20px 30px;
       text-align: center;
-      background: white;
+      background: radial-gradient(circle at top, #1d4ed8 0, #020617 55%);
     }
     .hero h1 {
-      font-size: 40px;
-      margin-bottom: 15px;
+      font-size: 32px;
+      margin-bottom: 12px;
     }
     .hero p {
-      font-size: 20px;
-      color: #444;
-      max-width: 700px;
+      font-size: 16px;
+      max-width: 640px;
+      margin: 0 auto 20px;
+      color: #cbd5f5;
+    }
+    .hero .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      margin-bottom: 12px;
+      border-radius: 999px;
+      border: 1px solid #38bdf8;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #e0f2fe;
+    }
+    .hero .subnote {
+      font-size: 13px;
+      color: #9ca3af;
+    }
+
+    .products-section {
+      padding: 30px 16px 50px;
+      max-width: 1080px;
       margin: 0 auto;
     }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 40px;
-    }
-    .product {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    .products-section h2 {
+      font-size: 24px;
+      margin-bottom: 8px;
       text-align: center;
     }
-    .product h3 {
-      font-size: 22px;
+    .products-section p.section-desc {
+      font-size: 14px;
+      text-align: center;
+      color: #9ca3af;
+      margin-bottom: 24px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .product-card {
+      background: #020617;
+      border-radius: 16px;
+      padding: 18px 18px 20px;
+      border: 1px solid #1f2937;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 230px;
+    }
+    .product-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+    .product-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .product-desc {
+      font-size: 14px;
+      color: #9ca3af;
       margin-bottom: 10px;
     }
-    .product p {
-      color: #555;
-      font-size: 16px;
+    .product-list {
+      margin: 0 0 10px 18px;
+      padding: 0;
+      color: #6b7280;
+      font-size: 13px;
     }
-    .button {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 20px;
-      background: #1f4fff;
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
+    .product-list li {
+      margin-bottom: 3px;
     }
-    footer {
-      background: #1f4fff;
-      color: white;
-      padding: 20px;
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .price {
+      font-size: 18px;
+      font-weight: 700;
+      color: #facc15;
+    }
+    .price span {
+      font-size: 12px;
+      font-weight: 400;
+      color: #9ca3af;
+      margin-left: 4px;
+    }
+    .pay-button {
+      border: none;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #0f172a;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pay-button span.card {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .guarantee {
+      margin-top: 28px;
+      font-size: 13px;
       text-align: center;
-      margin-top: 40px;
+      color: #9ca3af;
+    }
+    .guarantee strong {
+      color: #e5e7eb;
+    }
+
+    footer {
+      background: #020617;
+      padding: 16px;
+      text-align: center;
+      font-size: 12px;
+      color: #6b7280;
+      border-top: 1px solid #111827;
+    }
+
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 40px;
+      }
+      .hero p {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>Digital Empire Store</header>
+  <header>
+    <div class="logo">Digital Empire Store</div>
+    <div class="tagline">Instant-download business bundles · Pay once, use forever</div>
+  </header>
 
   <section class="hero">
-    <h1>Instant Digital Downloads. Zero Effort. High Value.</h1>
-    <p>Professional contracts, templates, courses, and business tools delivered automatically after purchase.</p>
+    <div class="badge">Automated Digital Products</div>
+    <h1>Done-for-you business tools that make money while you sleep.</h1>
+    <p>
+      Download-ready contracts, business kits, credit repair packs, marketing templates,
+      real estate tools and side hustle systems. Pay securely with PayPal and get instant access.
+    </p>
+    <p class="subnote">All products are digital downloads. No shipping. No waiting.</p>
   </section>
 
-  <section class="products">
-    <div class="product">
-      <h3>Ultimate Contract Bundle</h3>
-      <p>25+ editable legal-style business contracts.</p>
-      <a class="button" href="contracts-bundle.zip">Download</a>
+  <section class="products-section">
+    <h2>Pick Your Money-Making Bundle</h2>
+    <p class="section-desc">Each bundle is a full digital product you can use for your own business or resell as part of your services.</p>
+
+    <div class="product-grid">
+
+      <!-- CONTRACTS BUNDLE -->
+      <article class="product-card">
+        <div>
+          <div class="product-tag">Legal & Business</div>
+          <div class="product-title">Ultimate Contracts Bundle</div>
+          <p class="product-desc">25+ plug-and-play agreements for freelancers, agencies, and small businesses.</p>
+          <ul class="product-list">
+            <li>Freelancer & service agreements</li>
+            <li>NDAs & non-competes</li>
+            <li>Client onboarding + scope of work</li>
+            <li>Partnership & collaboration templates</li>
+          </ul>
+        </div>
+        <div class="product-footer">
+          <div class="price">$29 <span>one-time</span></div>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="Luiggievite@outlook.com">
+            <input type="hidden" name="item_name" value="Ultimate Contracts Bundle">
+            <input type="hidden" name="amount" value="29.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="pay-button">
+              Buy with PayPal
+              <span class="card">Instant download</span>
+            </button>
+          </form>
+        </div>
+      </article>
+
+      <!-- BUSINESS STARTER KIT -->
+      <article class="product-card">
+        <div>
+          <div class="product-tag">Business Systems</div>
+          <div class="product-title">Business Starter Kit</div>
+          <p class="product-desc">Launch and organize any small business with ready-made planners & dashboards.</p>
+          <ul class="product-list">
+            <li>Business plan & offer worksheets</li>
+            <li>Income & expense trackers</li>
+            <li>Client pipeline & CRM sheet</li>
+            <li>Weekly CEO review templates</li>
+          </ul>
+        </div>
+        <div class="product-footer">
+          <div class="price">$25 <span>one-time</span></div>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="Luiggievite@outlook.com">
+            <input type="hidden" name="item_name" value="Business Starter Kit">
+            <input type="hidden" name="amount" value="25.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="pay-button">
+              Buy with PayPal
+              <span class="card">Instant download</span>
+            </button>
+          </form>
+        </div>
+      </article>
+
+      <!-- CREDIT REPAIR MASTERKIT -->
+      <article class="product-card">
+        <div>
+          <div class="product-tag">Finance & Credit</div>
+          <div class="product-title">Credit Repair Masterkit</div>
+          <p class="product-desc">Templates and trackers to structure DIY credit repair or offer it as a service.</p>
+          <ul class="product-list">
+            <li>Dispute letter templates</li>
+            <li>Inquiry removal & late payment letters</li>
+            <li>Credit rebuilding action plan</li>
+            <li>Score tracking spreadsheets</li>
+          </ul>
+        </div>
+        <div class="product-footer">
+          <div class="price">$27 <span>one-time</span></div>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="Luiggievite@outlook.com">
+            <input type="hidden" name="item_name" value="Credit Repair Masterkit">
+            <input type="hidden" name="amount" value="27.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="pay-button">
+              Buy with PayPal
+              <span class="card">Instant download</span>
+            </button>
+          </form>
+        </div>
+      </article>
+
+      <!-- MARKETING TEMPLATES PRO -->
+      <article class="product-card">
+        <div>
+          <div class="product-tag">Marketing</div>
+          <div class="product-title">Marketing Templates Pro</div>
+          <p class="product-desc">Content, offers, and campaigns ready to plug into social media and email.</p>
+          <ul class="product-list">
+            <li>90-day content calendar</li>
+            <li>Post & reel caption templates</li>
+            <li>Email campaign outlines</li>
+            <li>Lead magnet & funnel worksheet</li>
+          </ul>
+        </div>
+        <div class="product-footer">
+          <div class="price">$24 <span>one-time</span></div>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="Luiggievite@outlook.com">
+            <input type="hidden" name="item_name" value="Marketing Templates Pro">
+            <input type="hidden" name="amount" value="24.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="pay-button">
+              Buy with PayPal
+              <span class="card">Instant download</span>
+            </button>
+          </form>
+        </div>
+      </article>
+
+      <!-- REAL ESTATE MEGA PACK -->
+      <article class="product-card">
+        <div>
+          <div class="product-tag">Real Estate</div>
+          <div class="product-title">Real Estate Mega Pack</div>
+          <p class="product-desc">Tools for wholesalers, investors, and agents to analyze and organize deals.</p>
+          <ul class="product-list">
+            <li>Deal analyzer spreadsheet</li>
+            <li>Seller & buyer intake forms</li>
+            <li>Lead tracker & follow-up sheet</li>
+            <li>Basic assignment / option templates</li>
+          </ul>
+        </div>
+        <div class="product-footer">
+          <div class="price">$32 <span>one-time</span></div>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="Luiggievite@outlook.com">
+            <input type="hidden" name="item_name" value="Real Estate Mega Pack">
+            <input type="hidden" name="amount" value="32.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="pay-button">
+              Buy with PayPal
+              <span class="card">Instant download</span>
+            </button>
+          </form>
+        </div>
+      </article>
+
+      <!-- SIDE HUSTLE AUTOMATION PACK -->
+      <article class="product-card">
+        <div>
+          <div class="product-tag">Side Hustles</div>
+          <div class="product-title">Side Hustle Automation Pack</div>
+          <p class="product-desc">Systems, checklists, and automations to start and scale simple online hustles.</p>
+          <ul class="product-list">
+            <li>Step-by-step launch checklists</li>
+            <li>Content & outreach scripts</li>
+            <li>Automation workflow diagrams</li>
+            <li>Weekly money dashboard</li>
+          </ul>
+        </div>
+        <div class="product-footer">
+          <div class="price">$21 <span>one-time</span></div>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="Luiggievite@outlook.com">
+            <input type="hidden" name="item_name" value="Side Hustle Automation Pack">
+            <input type="hidden" name="amount" value="21.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="pay-button">
+              Buy with PayPal
+              <span class="card">Instant download</span>
+            </button>
+          </form>
+        </div>
+      </article>
+
     </div>
 
-    <div class="product">
-      <h3>Business Templates Pack</h3>
-      <p>Planners, budgeting sheets, branding kits, content calendars.</p>
-      <a class="button" href="templates-pack.zip">Download</a>
-    </div>
-
-    <div class="product">
-      <h3>AI Business Starter Course</h3>
-      <p>6-module beginner course with worksheets.</p>
-      <a class="button" href="ai-course.zip">Download</a>
-    </div>
-
-    <div class="product">
-      <h3>Self-Improvement Toolkit</h3>
-      <p>Goal planners, habit trackers, and daily organizers.</p>
-      <a class="button" href="toolkit.zip">Download</a>
-    </div>
+    <p class="guarantee">
+      <strong>Note:</strong> All products are digital files (ZIP). After you pay with PayPal, use your download link
+      from the store or message your receipt to get re-send access at any time.
+    </p>
   </section>
 
-  <footer>© 2025 Digital Empire Store</footer>
+  <footer>
+    © 2025 Digital Empire Store · Payments processed securely by PayPal · All products are digital downloads only.
+  </footer>
 </body>
 </html>
